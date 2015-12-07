@@ -18,11 +18,9 @@ start() ->
     receive {_, Reply} -> Reply
     end.
 
-
+% How do I make this work properly as an application with supervisors?
 start(normal, _Args) ->
-    _Pid = spawn(?MODULE, loop0, [self()]),
-    receive {_, Reply} -> Reply
-    end.
+    _ = spawn(?MODULE, loop0, [self()]).
 
 stop(_State) ->
     ok.
